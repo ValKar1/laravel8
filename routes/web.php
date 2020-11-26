@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BroadcastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('start-pusher-event', [BroadcastController::class, 'eventPusher']);
+Route::get('show-pusher-event', [BroadcastController::class, 'showPusher']);
+Route::get('create-user', [BroadcastController::class, 'createUser']);
+Route::get('login-user', [BroadcastController::class, 'loginUser']);
