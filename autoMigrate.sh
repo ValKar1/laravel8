@@ -7,6 +7,7 @@ php artisan migrate:status
 migrationsStatus=$(php artisan migrate:status)
 ran="| Yes  |";
 countMigrationsBefore=`grep -o "$Ran" <<< "$migrationsStatus" | wc -l`
+
 ### Create artifact
 ### Copy artifacts (rsync database/migrations/ database/artifact_migrations/)
 
