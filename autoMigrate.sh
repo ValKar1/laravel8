@@ -7,6 +7,8 @@ php artisan migrate:status
 migrationsStatus=$(php artisan migrate:status)
 ran="| Yes  |";
 countMigrationsBefore=`grep -o "$Ran" <<< "$migrationsStatus" | wc -l`
+### Create artifact
+### Copy artifacts (rsync database/migrations/ database/artifact_migrations/)
 
 git pull 
 
@@ -22,8 +24,12 @@ echo $countMigrationsBefore" - "$countMigrationsAfter" = "$difference
 
 # Detect rollback
 if [ $difference < 0 ]; then
+
+    ### Copy artifact in migrations: (rsync database/artifact_migrations/ database/migrations/)
     echo "php artisan migrate:rollback --step="${difference#-}
     php artisan migrate:rollback --step=$difference
     # Migrate to safety
     php artisan migrate
+
+    ### Delete changes from database/migrations/: (git reset --hard)
 fi
