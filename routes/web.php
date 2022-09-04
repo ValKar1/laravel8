@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Userinterface\Controller\BillController;
-use App\Userinterface\Controller\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('client/address', [ClientController::class, 'changeAddress']);
-
-Route::post('bill', [BillController::class, 'create']);
+require base_path('app/Bill/Application/routes/web.php');
