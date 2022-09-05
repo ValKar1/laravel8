@@ -3,11 +3,11 @@
 namespace App\Bill\Infrastructure\Controllers;
 
 use Illuminate\Http\Request;
-use App\Infrastructure\Laravel\Controller;
+use App\Common\Laravel\Controller;
 
 class ClientController extends Controller
 {
-    public function actionChangeAddress(Request $request)
+    public function changeAddressAction(Request $request)
     {
         return "tut2";
         $clientId = $request->client_id;
@@ -15,5 +15,10 @@ class ClientController extends Controller
         $this->clientService->changeAddress($clientId, $dto);
 
         return $clientId;
+    }
+
+    public function getAddressAction(Request $request)
+    {
+        return 'getAddressAction';
     }
 }

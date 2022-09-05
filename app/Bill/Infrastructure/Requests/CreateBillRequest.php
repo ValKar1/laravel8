@@ -2,8 +2,8 @@
 
 namespace App\Bill\Infrastructure\Requests;
 
-use App\Shared\Requests\AuthRequest;
-use App\Shared\Exceptions\AuthorizationRequiredException;
+use App\Common\Requests\AuthRequest;
+use App\Common\Exceptions\AuthorizationRequiredException;
 
 
 class CreateBillRequest extends AuthRequest

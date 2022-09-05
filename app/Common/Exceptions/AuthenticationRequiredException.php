@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Exceptions;
+namespace App\Common\Exceptions;
 
 class AuthenticationRequiredException extends BaseException
 {

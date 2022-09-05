@@ -89,3 +89,7 @@ Domain Model
 ![1](README/DomainModel.png)
 
 hydrator design pattern for Repository (map on object)
+
+```sh
+/Applications/MAMP/bin/php/php7.4.12/bin/php /usr/local/bin/composer install
+```

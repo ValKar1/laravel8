@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Infrastructure\Laravel\Providers\AppServiceProvider::class,
-        App\Infrastructure\Laravel\Providers\AuthServiceProvider::class,
-        // App\Infrastructure\Laravel\Providers\BroadcastServiceProvider::class,
-        App\Infrastructure\Laravel\Providers\EventServiceProvider::class,
-        App\Infrastructure\Laravel\Providers\RouteServiceProvider::class,
+        App\Common\Laravel\Providers\AppServiceProvider::class,
+        App\Common\Laravel\Providers\AuthServiceProvider::class,
+        // App\Common\Laravel\Providers\BroadcastServiceProvider::class,
+        App\Common\Laravel\Providers\EventServiceProvider::class,
+        App\Common\Laravel\Providers\RouteServiceProvider::class,
 
     ],
 

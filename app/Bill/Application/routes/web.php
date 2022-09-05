@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Bill\Infrastructure\Controllers\BillController;
 use App\Bill\Infrastructure\Controllers\ClientController;
 
-Route::post('client/address', [ClientController::class, 'changeAddress']);
+Route::get('client/address', [ClientController::class, 'getAddressAction']);
+Route::post('client/address', [ClientController::class, 'changeAddressAction']);
 
-Route::post('bill', [BillController::class, 'create']);
+Route::get('bill', [BillController::class, 'getBillAction']);
+Route::post('bill', [BillController::class, 'createBillAction']);

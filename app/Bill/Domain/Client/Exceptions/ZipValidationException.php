@@ -2,7 +2,7 @@
 
 namespace App\Bill\Domain\Client\Exceptions;
 
-use App\Shared\Exceptions\BaseException;
+use App\Common\Exceptions\BaseException;
 
 class ZipValidationException extends BaseException
 {

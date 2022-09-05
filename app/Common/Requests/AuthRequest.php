@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Shared\Requests;
+namespace App\Common\Requests;
 
-use App\Shared\Exceptions\AuthenticationRequiredException;
+use App\Common\Exceptions\AuthenticationRequiredException;
 
 class AuthRequest extends BaseRequest
 {
