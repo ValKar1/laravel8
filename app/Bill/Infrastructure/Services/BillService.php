@@ -1,8 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\Services;
 
 use Illuminate\Support\Str;
+use App\Bill\Domain\Bill\Bill;
+use App\Bill\Domain\Bill\ValueObjects\NewStatus;
+use App\Bill\Domain\Bill\ValueObjects\RejectStatus;
+use App\Bill\Infrastructure\Services\BillOptimiserService;
+use App\Bill\Domain\Item\RepositoryInterfaces\ItemRepositoryInterface;
+use App\Bill\Domain\Bill\RepositoryInterfaces\BillRepositoryInterface;
+use App\Bill\Domain\Client\RepositoryInterfaces\ClientRepositoryInterface;
 
 class BillService implements BillServiceInterface
 {
@@ -61,7 +69,7 @@ class BillService implements BillServiceInterface
 //            return null;
 //        }
 
-        $this->dispatcher->dispatchEvents($bill->releaseEvents()); //TODO: create dispatcher
+        $this->dispatcher->dispatchEvents($bill->releaseEvents()); // TODO: create dispatcher
 
         return true;
     }

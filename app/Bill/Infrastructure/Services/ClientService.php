@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\Services;
+
+use App\Bill\Domain\Client\RepositoryInterfaces\ClientRepositoryInterface;
 
 class ClientService implements ClientServiceInterface
 {

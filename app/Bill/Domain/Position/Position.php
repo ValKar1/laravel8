@@ -1,17 +1,20 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Position;
 
+use App\Common\Domain\Entity;
+use App\Bill\Domain\Item\Item;
+
 /**
  * Class Position
- *
  */
 class Position extends Entity
 {
     protected $item;
     protected $quantity;
 
-    public function __construct(Item $item, $quantity = 1)
+    public function __construct(Item $item, int $quantity = 1)
     {
         $this->item = $item;
         $this->quantity = $quantity;
@@ -41,12 +44,12 @@ class Position extends Entity
         $this->quantity = $quantity;
     }
 
-    public function getPrice()
+    public function getPrice(): Money
     {
         return $this->item->getPrice();
     }
 
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->item->getPrice()->getAmount();
     }

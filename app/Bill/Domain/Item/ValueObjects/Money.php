@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Item\ValueObjects;
+
+use App\Common\Domain\ValueObject;
 
 class Money extends ValueObject
 {
@@ -18,12 +21,12 @@ class Money extends ValueObject
         return new self('USD', $amount);
     }
 
-    public function validateCurrency($currency)
+    public function validateCurrency(string $currency): string
     {
         return $currency;
     }
 
-    public function validateAmount($amount)
+    public function validateAmount(int $amount): int
     {
         return $amount;
     }

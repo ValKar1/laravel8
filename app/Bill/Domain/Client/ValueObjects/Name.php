@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Client\ValueObjects;
+
+use App\Common\Domain\ValueObject;
 
 class Name extends ValueObject
 {
@@ -13,12 +16,12 @@ class Name extends ValueObject
         $this->lastname = $this->validateLastname($lastname);
     }
 
-    public function validateFirstname($firstname)
+    public function validateFirstname(string $firstname): string
     {
         return $firstname;
     }
 
-    public function validateLastname($lastname)
+    public function validateLastname(string $lastname): string
     {
         return $lastname;
     }

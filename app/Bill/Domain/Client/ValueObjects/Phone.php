@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Client\ValueObjects;
+
+use App\Common\Domain\ValueObject;
 
 class Phone extends ValueObject
 {
@@ -15,17 +18,17 @@ class Phone extends ValueObject
         $this->number = $this->validateNumber($number);
     }
 
-    public function validateCountryCode($countryCode)
+    public function validateCountryCode(string $countryCode): string
     {
         return $countryCode;
     }
 
-    public function validateCityCode($cityCode)
+    public function validateCityCode(string $cityCode): string
     {
         return $cityCode;
     }
 
-    public function validateNumber($number)
+    public function validateNumber(string $number): string
     {
         return $number;
     }

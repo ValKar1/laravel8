@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\ServiceAlternatives;
+
+use App\Bill\Domain\Bill\Bill;
 
 /**
  * Class BillPositionsMerger

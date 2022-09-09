@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Bill\ValueObjects;
+
+use App\Common\Domain\ValueObject;
 
 abstract class Status extends ValueObject
 {

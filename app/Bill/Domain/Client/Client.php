@@ -1,7 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Client;
 
+use App\Common\Domain\Entity;
+use App\Bill\Domain\Client\ValueObjects\Name;
+use App\Bill\Domain\Client\ValueObjects\Phone;
+use App\Bill\Domain\Client\ValueObjects\Address;
 use App\Bill\Domain\Client\Exceptions\PhoneValidationException;
 
 /**
@@ -16,7 +21,7 @@ class Client extends Entity
     private $address;
     private $phone;
 
-    public function __construct($id, Name $name, Address $address, Phone $phone)
+    public function __construct(int $id, Name $name, Address $address, Phone $phone)
     {
         if (!preg_match('/\+\d+/', $phone)) {
             throw new PhoneValidationException();
@@ -28,7 +33,7 @@ class Client extends Entity
         $this->phone = $phone;
     }
 
-    public function changeAddress(Address $address)
+    public function changeAddress(Address $address): void
     {
         $this->address = $address;
     }

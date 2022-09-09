@@ -1,6 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Item;
+
+use App\Common\Domain\Entity;
+use App\Bill\Domain\Item\ValueObjects\Money;
+
 /**
  * Class Item
  *
@@ -15,7 +20,7 @@ class Item extends Entity
     private $description;
     private $price;
 
-    public function __construct($id, $name, Money $price)
+    public function __construct(int $id, string $name, Money $price)
     {
         $this->id = $id;
         $this->name = $name;
@@ -33,7 +38,7 @@ class Item extends Entity
     /**
      * @return mixed
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -41,7 +46,7 @@ class Item extends Entity
     /**
      * @param mixed $name
      */
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -57,7 +62,7 @@ class Item extends Entity
     /**
      * @param mixed $description
      */
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
@@ -65,7 +70,7 @@ class Item extends Entity
     /**
      * @return mixed
      */
-    public function getPrice()
+    public function getPrice(): Money
     {
         return $this->price;
     }
@@ -73,7 +78,7 @@ class Item extends Entity
     /**
      * @param mixed $price
      */
-    public function setPrice($price): void
+    public function setPrice(Money $price): void
     {
         $this->price = $price;
     }

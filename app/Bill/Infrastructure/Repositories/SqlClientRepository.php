@@ -1,6 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\Repositories;
+
+use Illuminate\Database\Connection;
+use App\Bill\Domain\Bill\Bill;
+use App\Bill\Domain\Bill\ValueObjects\Status;
 
 class SqlClientRepository implements ClientRepositoryInterface
 {

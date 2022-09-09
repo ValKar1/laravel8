@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Client\ValueObjects;
+
+use App\Common\Domain\ValueObject;
+use App\Bill\Domain\Client\Exceptions\ZipValidationException;
 
 class Address extends ValueObject
 {
@@ -17,7 +21,7 @@ class Address extends ValueObject
         $this->street = $this->validateStreet($street);
     }
 
-    public function validateZip($zip)
+    public function validateZip(string $zip): string
     {
         if (!preg_match('/^\+\d+$/', $zip)) {
             //TODO:
@@ -26,17 +30,17 @@ class Address extends ValueObject
         return $zip;
     }
 
-    public function validateCity($city)
+    public function validateCity(string $city): string
     {
         return $city;
     }
 
-    public function validateCountry($country)
+    public function validateCountry(string $country): string
     {
         return $country;
     }
 
-    public function validateStreet($street)
+    public function validateStreet(string $street): string
     {
         return $street;
     }

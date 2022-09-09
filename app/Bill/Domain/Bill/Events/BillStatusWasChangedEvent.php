@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Bill\Events;
+
+use App\Bill\Domain\Bill\Bill;
 
 class BillStatusWasChangedEvent
 {

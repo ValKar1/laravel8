@@ -1,6 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Bill\Domain\Bill;
+
+use App\Common\Domain\Entity;
+use App\Bill\Domain\Client\Client;
+use App\Bill\Domain\Position\Position;
+use App\Bill\Domain\Bill\ValueObjects\Status;
+use App\Bill\Domain\Bill\ValueObjects\NewStatus;
+use App\Bill\Domain\Bill\Events\BillStatusWasChangedEvent;
 
 /**
  * Class Bill
@@ -14,7 +22,7 @@ class Bill extends Entity
     protected $positions;
     protected $status;
 
-    public function __construct($id, Client $client)
+    public function __construct(int $id, Client $client)
     {
         $this->id = $id;
         $this->client = $client;
@@ -52,7 +60,6 @@ class Bill extends Entity
     public function removePosition(Position $position)
     {
         $this->status->ensureAllowModification();
-
     }
 
     /**
@@ -66,7 +73,7 @@ class Bill extends Entity
     /**
      * @return mixed
      */
-    public function getClient()
+    public function getClient(): Client
     {
         return $this->client;
     }
@@ -74,7 +81,7 @@ class Bill extends Entity
     /**
      * @return mixed
      */
-    public function getPositions()
+    public function getPositions(): Position
     {
         return $this->positions;
     }
@@ -82,7 +89,7 @@ class Bill extends Entity
     /**
      * @return mixed
      */
-    public function getStatus()
+    public function getStatus(): Status
     {
         return $this->status;
     }
