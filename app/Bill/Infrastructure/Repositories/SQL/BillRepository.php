@@ -1,19 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Bill\Infrastructure\Repositories;
+namespace App\Bill\Infrastructure\Repositories\SQL;
 
 use Illuminate\Database\Connection;
 use App\Bill\Domain\Bill\Bill;
 use App\Bill\Domain\Bill\ValueObjects\Status;
+use App\Bill\Domain\Bill\RepositoryInterfaces\BillRepositoryInterface;
 
-class SqlClientRepository implements ClientRepositoryInterface
-{
+class BillRepository implements BillRepositoryInterface {
+
     public function __construct(Connection $db) {
         $this->db = $db;
     }
 
-    public function create(Bill $bill) {
+    public function create(Bill $bill)
+    {
         $this->db->transactionBegin();
 
         $this->db->insert('bill', [
@@ -32,7 +34,7 @@ class SqlClientRepository implements ClientRepositoryInterface
         $this->transactionCommit();
     }
 
-    public function findById($id)
+    public function findById($billId)
     {
         // TODO: Implement findById() method.
     }

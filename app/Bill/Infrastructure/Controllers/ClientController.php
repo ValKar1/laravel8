@@ -3,22 +3,33 @@ declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\Controllers;
 
-use Illuminate\Http\Request;
 use App\Common\Laravel\Controller;
+use App\Bill\Infrastructure\Services\ClientService;
+use App\Bill\Infrastructure\DataTransferObjects\AddressDTO;
+use App\Bill\Infrastructure\Requests\Address\GetAddressRequest;
+use App\Bill\Infrastructure\Requests\Address\ChangeAddressRequest;
 
 class ClientController extends Controller
 {
-    public function changeAddressAction(Request $request)
+    private $clientService;
+
+    public function __construct(
+        ClientService $clientService
+    )
     {
-        return "tut2";
+        $this->clientService = $clientService;
+    }
+
+    public function changeAddressAction(ChangeAddressRequest $request)
+    {
         $clientId = $request->client_id;
-        $dto = AddressDto::fromRequest($this->request);
+        $dto = AddressDTO::fromRequest($request);
         $this->clientService->changeAddress($clientId, $dto);
 
         return $clientId;
     }
 
-    public function getAddressAction(Request $request)
+    public function getAddressAction(GetAddressRequest $request): string
     {
         return 'getAddressAction';
     }

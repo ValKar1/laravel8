@@ -3,26 +3,33 @@ declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\DataTransferObjects;
 
-class AddressDto extends DataTransferObject
+use App\Common\Infrastructure\DataTransferObject;
+
+class AddressDTO extends DataTransferObject
 {
     public $country;
     public $city;
     public $zip;
-    public $lines;
+    public $street;
 
     public function load($data)
     {
         $this->country = $data['country'];
+        $this->city = $data['city'];
+        $this->zip = $data['zip'];
+        $this->street = $data['street'];
     }
 
     /**
      * Helper
      *
      * @param $request
+     * @return AddressDTO
      */
     public static function fromRequest($request)
     {
-        return (new self())->load($request->post());
+        $dto = (new self());
+        $dto->load($request->post());
+        return $dto;
     }
-
 }

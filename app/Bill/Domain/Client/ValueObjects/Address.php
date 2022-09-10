@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Bill\Domain\Client\ValueObjects;
 
 use App\Common\Domain\ValueObject;
-use App\Bill\Domain\Client\Exceptions\ZipValidationException;
+use App\Bill\Domain\Client\Validators\ZipValidator;
 
 class Address extends ValueObject
 {
@@ -17,17 +17,13 @@ class Address extends ValueObject
     {
         $this->country = $this->validateCountry($country);
         $this->city = $this->validateCity($city);
-        $this->zip = $this->validateZip($zip);
+        $this->zip = $this->validateZip($zip, $country);
         $this->street = $this->validateStreet($street);
     }
 
-    public function validateZip(string $zip): string
+    public function validateZip(string $zip, string $country): string
     {
-        if (!preg_match('/^\+\d+$/', $zip)) {
-            //TODO:
-            throw new ZipValidationException($zip);
-        }
-        return $zip;
+        return (string) (new ZipValidator)->check($zip, $country);
     }
 
     public function validateCity(string $city): string

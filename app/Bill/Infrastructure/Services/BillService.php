@@ -8,17 +8,22 @@ use App\Bill\Domain\Bill\Bill;
 use App\Bill\Domain\Bill\ValueObjects\NewStatus;
 use App\Bill\Domain\Bill\ValueObjects\RejectStatus;
 use App\Bill\Infrastructure\Services\BillOptimiserService;
-use App\Bill\Domain\Item\RepositoryInterfaces\ItemRepositoryInterface;
-use App\Bill\Domain\Bill\RepositoryInterfaces\BillRepositoryInterface;
-use App\Bill\Domain\Client\RepositoryInterfaces\ClientRepositoryInterface;
+use App\Bill\Infrastructure\Repositories\SQL\ItemRepository;
+use App\Bill\Infrastructure\Repositories\SQL\BillRepository;
+use App\Bill\Infrastructure\Repositories\SQL\ClientRepository;
 
 class BillService implements BillServiceInterface
 {
+    private $itemRepository;
+    private $billRepository;
+    private $clientRepository;
+    private $billOptimiserService;
+
     public function __construct(
+        BillRepository $billRepository,
+        ClientRepository $clientRepository,
         ItemRepositoryInterface $itemRepository,
-        BillRepositoryInterface $billRepository,
-        BillOptimiserService $billOptimiserService,
-        ClientRepositoryInterface $clientRepository
+        BillOptimiserService $billOptimiserService
     )
     {
         $this->itemRepository = $itemRepository;
@@ -26,7 +31,6 @@ class BillService implements BillServiceInterface
         $this->clientRepository = $clientRepository;
         $this->billOptimiserService = $billOptimiserService;
     }
-
 
     public function create($clientId)
     {

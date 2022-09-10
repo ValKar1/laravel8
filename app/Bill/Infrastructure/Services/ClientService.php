@@ -3,12 +3,17 @@ declare(strict_types=1);
 
 namespace App\Bill\Infrastructure\Services;
 
-use App\Bill\Domain\Client\RepositoryInterfaces\ClientRepositoryInterface;
+use App\Bill\Domain\Client\ValueObjects\Address;
+use App\Bill\Infrastructure\DataTransferObjects\AddressDTO;
+use App\Bill\Infrastructure\Repositories\SQL\ClientRepository;
+use App\Bill\Domain\Client\ServiceInterfaces\ClientServiceInterface;
 
 class ClientService implements ClientServiceInterface
 {
+    private $clientRepository;
+
     public function __construct(
-        ClientRepositoryInterface $clientRepository
+        ClientRepository $clientRepository
     )
     {
         $this->clientRepository = $clientRepository;
@@ -19,7 +24,7 @@ class ClientService implements ClientServiceInterface
         // TODO: Implement create() method.
     }
 
-    public function changeAddress($clientId, AddressDto $dto)
+    public function changeAddress(int $clientId, AddressDTO $dto)
     {
         $client = $this->clientRepository->findById($clientId);
         $address = new Address(

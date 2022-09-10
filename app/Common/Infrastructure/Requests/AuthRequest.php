@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Common\Requests;
+namespace App\Common\Infrastructure\Requests;
 
 use App\Common\Exceptions\AuthenticationRequiredException;
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Bill\Infrastructure\Requests;
+namespace App\Bill\Infrastructure\Requests\Bill;
 
-use App\Common\Requests\AuthRequest;
+use App\Common\Infrastructure\Requests\AuthRequest;
 
 class GetBillRequest extends AuthRequest
 {
@@ -14,7 +14,7 @@ class GetBillRequest extends AuthRequest
      */
     public function authorize()
     {
-        parent::authorize();
+        // parent::authorize();
 
         return true;
     }
