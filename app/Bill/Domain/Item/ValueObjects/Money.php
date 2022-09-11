@@ -10,7 +10,7 @@ class Money extends ValueObject
     private $currency;
     private $amount;
 
-    public function __construct(string $currency, int $amount)
+    public function __construct(string $currency, float $amount)
     {
         $this->currency = $this->validateCurrency($currency);
         $this->amount = $this->validateAmount($amount);
@@ -26,8 +26,24 @@ class Money extends ValueObject
         return $currency;
     }
 
-    public function validateAmount(int $amount): int
+    public function validateAmount(float $amount): float
     {
         return $amount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->amount;
     }
 }

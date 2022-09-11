@@ -23,7 +23,8 @@ class Address extends ValueObject
 
     public function validateZip(string $zip, string $country): string
     {
-        return (string) (new ZipValidator)->check($zip, $country);
+        (new ZipValidator)->check($zip, $country);
+        return $zip;
     }
 
     public function validateCity(string $city): string

@@ -6,7 +6,7 @@ namespace App\Bill\Infrastructure\Controllers;
 use App\Common\Laravel\Controller;
 use App\Bill\Infrastructure\Services\BillService;
 use App\Bill\Infrastructure\Requests\Bill\GetBillRequest;
-use App\Bill\Infrastructure\Requests\Bill\CreateBillRequest;
+use App\Bill\Infrastructure\Requests\Bill\CreateClientRequest;
 
 class BillController extends Controller {
 
@@ -19,7 +19,7 @@ class BillController extends Controller {
         $this->billService = $billService;
     }
 
-    public function createBillAction(CreateBillRequest $request) :string
+    public function createBillAction(CreateClientRequest $request) :string
     {
         $billId = $this->billService->create($request->client_id);
         return $billId;

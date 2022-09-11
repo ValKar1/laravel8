@@ -5,6 +5,7 @@ use App\Bill\Infrastructure\Controllers\BillController;
 use App\Bill\Infrastructure\Controllers\ClientController;
 
 Route::get('client/address/{client_id}', [ClientController::class, 'getAddressAction']);
+Route::post('client', [ClientController::class, 'createClientAction']);
 Route::post('client/address', [ClientController::class, 'changeAddressAction']);
 
 Route::get('bill/{bill_id}', [BillController::class, 'getBillAction']);

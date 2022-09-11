@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Bill\Domain\Client\ValueObjects;
 
 use App\Common\Domain\ValueObject;
+use App\Bill\Domain\Client\Validators\CountryCodeValidator;
 
 class Phone extends ValueObject
 {
@@ -20,6 +21,7 @@ class Phone extends ValueObject
 
     public function validateCountryCode(string $countryCode): string
     {
+        (new CountryCodeValidator())->check($countryCode);
         return $countryCode;
     }
 

@@ -7,7 +7,6 @@ use App\Common\Domain\Entity;
 use App\Bill\Domain\Client\ValueObjects\Name;
 use App\Bill\Domain\Client\ValueObjects\Phone;
 use App\Bill\Domain\Client\ValueObjects\Address;
-use App\Bill\Domain\Client\Exceptions\PhoneValidationException;
 
 /**
  * Class Client
@@ -21,12 +20,8 @@ class Client extends Entity
     private $address;
     private $phone;
 
-    public function __construct(int $id, Name $name, Address $address, Phone $phone)
+    public function __construct($id, Name $name, Address $address, Phone $phone)
     {
-        if (!preg_match('/\+\d+/', $phone)) {
-            throw new PhoneValidationException();
-        }
-
         $this->id = $id;
         $this->name = $name;
         $this->address = $address;
@@ -36,5 +31,37 @@ class Client extends Entity
     public function changeAddress(Address $address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @return Phone
+     */
+    public function getPhone(): Phone
+    {
+        return $this->phone;
     }
 }

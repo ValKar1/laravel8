@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Bill\Infrastructure\DataTransferObjects;
+namespace App\Bill\Infrastructure\DTOs;
 
 use App\Common\Infrastructure\DataTransferObject;
 
@@ -26,7 +26,7 @@ class AddressDTO extends DataTransferObject
      * @param $request
      * @return AddressDTO
      */
-    public static function fromRequest($request)
+    public static function fromRequest($request): AddressDTO
     {
         $dto = (new self());
         $dto->load($request->post());

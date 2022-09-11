@@ -49,7 +49,7 @@ class Position extends Entity
         return $this->item->getPrice();
     }
 
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->item->getPrice()->getAmount();
     }
