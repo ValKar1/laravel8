@@ -16,13 +16,23 @@ class Name extends ValueObject
         $this->lastname = $this->validateLastname($lastname);
     }
 
-    public function validateFirstname(string $firstname): string
+    private function validateFirstname(string $firstname): string
     {
         return $firstname;
     }
 
-    public function validateLastname(string $lastname): string
+    private function validateLastname(string $lastname): string
     {
         return $lastname;
+    }
+
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    public function getLastname(): string
+    {
+        return $this->lastname;
     }
 }

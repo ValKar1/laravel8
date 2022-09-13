@@ -27,7 +27,7 @@ class ChangeAddressRequest extends AuthRequest
     public function rules()
     {
         return [
-            'client_id' => 'required|int|min:1',
+            'client_id' => 'required|uuid',
             'country' => 'required|string|max:45',
             'city' => 'required|string|max:45',
             'zip' => 'required|string|max:45',

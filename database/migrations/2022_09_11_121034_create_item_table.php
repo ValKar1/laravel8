@@ -14,7 +14,8 @@ class CreateItemTable extends Migration
     public function up()
     {
         Schema::create('item', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->foreignUuid('bill_id');
             $table->string('name');
             $table->integer('quantity');
             $table->string('description');

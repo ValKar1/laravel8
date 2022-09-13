@@ -27,7 +27,7 @@ class GetBillRequest extends AuthRequest
     public function rules()
     {
         return [
-            'bill_id' => 'required|int|min:1'
+            'bill_id' => 'required|uuid'
         ];
     }
 }

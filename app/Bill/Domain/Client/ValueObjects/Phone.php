@@ -14,24 +14,29 @@ class Phone extends ValueObject
 
     public function __construct(string $countryCode, string $cityCode, string $number)
     {
-        $this->countryCode = $this->validateCountryCode($countryCode);
-        $this->cityCode = $this->validateCityCode($cityCode);
-        $this->number = $this->validateNumber($number);
+        $this->countryCode = $this->validateCountryCode(trim($countryCode));
+        $this->cityCode = $this->validateCityCode(trim($cityCode));
+        $this->number = $this->validateNumber(trim($number));
     }
 
-    public function validateCountryCode(string $countryCode): string
+    private function validateCountryCode(string $countryCode): string
     {
         (new CountryCodeValidator())->check($countryCode);
         return $countryCode;
     }
 
-    public function validateCityCode(string $cityCode): string
+    private function validateCityCode(string $cityCode): string
     {
         return $cityCode;
     }
 
-    public function validateNumber(string $number): string
+    private function validateNumber(string $number): string
     {
         return $number;
+    }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->countryCode.' '.$this->cityCode.' '.$this->number;
     }
 }

@@ -27,7 +27,7 @@ class GetAddressRequest extends AuthRequest
     public function rules()
     {
         return [
-            'client_id' => 'required|int|min:1',
+            'client_id' => 'required|uuid',
         ];
     }
 

@@ -48,7 +48,9 @@ class ClientService implements ClientServiceInterface
 
         $client = new Client($id, $name, $address, $phone);
 
-        return $client->getId();
+        $this->clientRepository->create($client);
+
+        return $id;
     }
 
     public function changeAddress($clientId, AddressDTO $dto)
@@ -63,5 +65,7 @@ class ClientService implements ClientServiceInterface
         $client->changeAddress($address);
 
         $this->clientRepository->update($client);
+
+        return $client->getId();
     }
 }

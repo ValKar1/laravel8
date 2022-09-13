@@ -21,24 +21,44 @@ class Address extends ValueObject
         $this->street = $this->validateStreet($street);
     }
 
-    public function validateZip(string $zip, string $country): string
+    private function validateZip(string $zip, string $country): string
     {
         (new ZipValidator)->check($zip, $country);
         return $zip;
     }
 
-    public function validateCity(string $city): string
+    private function validateCity(string $city): string
     {
         return $city;
     }
 
-    public function validateCountry(string $country): string
+    private function validateCountry(string $country): string
     {
         return $country;
     }
 
-    public function validateStreet(string $street): string
+    private function validateStreet(string $street): string
     {
         return $street;
+    }
+
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
+
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    public function getZip(): string
+    {
+        return $this->zip;
+    }
+
+    public function getStreet(): string
+    {
+        return $this->street;
     }
 }

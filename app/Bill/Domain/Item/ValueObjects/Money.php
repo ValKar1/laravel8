@@ -21,12 +21,12 @@ class Money extends ValueObject
         return new self('USD', $amount);
     }
 
-    public function validateCurrency(string $currency): string
+    private function validateCurrency(string $currency): string
     {
         return $currency;
     }
 
-    public function validateAmount(float $amount): float
+    private function validateAmount(float $amount): float
     {
         return $amount;
     }

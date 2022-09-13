@@ -14,8 +14,8 @@ class CreateBillTable extends Migration
     public function up()
     {
         Schema::create('bill', function (Blueprint $table) {
-            $table->id();
-            $table->integer('client_id');
+            $table->uuid('id');
+            $table->foreignUuid('client_id');
             $table->string('status');
             $table->timestamps();
         });
